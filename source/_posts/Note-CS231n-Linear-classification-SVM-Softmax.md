@@ -4,7 +4,7 @@ date: 2016-11-10 00:58:04
 tags:
 categories: Machine Learning
 ---
-{% img /images/2016-11-10-CS231n-Linear-classification-Support-Vector-Machine-Softmax-fig1.png 500  "An example of mapping an image to class scores." %}
+{% img /images/Note-CS231n-Linear-classification-SVM-Softmax-svmvssoftmax.png 550  "Example of the difference between the SVM and Softmax classifiers for one datapoint." %}
 <!-- more -->
 
 Last section descibes the problem of Image Classification and solve the problem with KNN. In this section, we describes linear approach for Image Classification. The approach contains two components: **score function** and **loss function**
@@ -58,6 +58,28 @@ Replace the **hinge loss** with a **cross-entropy loss**.
  {% math %}
 L_i=-log(\dfrac{e^{f_{y_i}}}{\sum_{j}e^{f_j}})
  {% endmath %}
+
+#### Information theory interpratation
+The cross-entropy between a “true” distribution ￼ and an estimated distribution.
+ {% math %}
+H(p,q) = -\sum_{x}p(x)logq(x)
+ {% endmath %}
+Moreover, since the cross-entropy can be written in terms of entropy and the Kullback-Leibler divergence as {% math %} H(p,q) = H(p)+D_{KL}(p||q){% endmath %}, and the entropy of the $H(p)$ is zero, this is also equivalent to minimizing the KL divergence between the two distributions.
+
+### Probability interpretation
+The (normalized) probability assigned to the correct label $y_i$ given the image $x_i$ and parameterized by $W$.
+ {% math %}
+p(y_i|x_i;W)=\dfrac{e^{f_{y_i}}}{\sum_{j}e^{f_j}}
+ {% endmath %}
+In the probabilistic interpretation, we are therefore minimizing the negative log likelihood of the correct class, which can be interpreted as performing Maximum Likelihood Estimation (MLE).
+
+Besides, we can now also interpret the regularization term $R(W)$ in the full loss function as coming from a Gaussian prior over the weight matrix $W$, where instead of MLE we are performing the Maximum a posteriori (MAP) estimation.
+
+## SVM vs. Softmax
+The Softmax classifier is never fully happy with the scores it produces: the correct class could always have a higher probability and the incorrect classes always a lower probability and the loss would always get better. However, the SVM is happy once the margins are satisfied and it does not micromanage the exact scores beyond this constraint.
+
+
+
 
 
 
