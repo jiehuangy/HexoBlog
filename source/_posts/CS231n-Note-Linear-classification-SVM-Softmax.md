@@ -1,10 +1,10 @@
 ---
-title: '[Note CS231n] Linear classification: SVM, Softmax'
+title: '[CS231n Note] Linear classification: SVM, Softmax'
 date: 2016-11-10 00:58:04
 tags:
-categories: Machine Learning
+categories: Neural Networks
 ---
-{% img /images/Note-CS231n-Linear-classification-SVM-Softmax-svmvssoftmax.png 550  "Example of the difference between the SVM and Softmax classifiers for one datapoint." %}
+![Example of the difference between the SVM and Softmax classifiers for one datapoint](/images/Note-CS231n-Linear-classification-SVM-Softmax-f1.png)
 <!-- more -->
 
 Last section descibes the problem of Image Classification and solve the problem with KNN. In this section, we describes linear approach for Image Classification. The approach contains two components: **score function** and **loss function**
